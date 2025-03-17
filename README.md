@@ -1,12 +1,16 @@
 # Nightscout Web Monitor (a.k.a. cgm-remote-monitor)
 
+## Personal note
+
+docker build -t my-local-ns-image:latest .
+
 ![nightscout horizontal](https://cloud.githubusercontent.com/assets/751143/8425633/93c94dc0-1ebc-11e5-99e7-71a8f464caac.png)
 
 [![Build Status][build-img]][build-url] [![Dependency Status][dependency-img]][dependency-url]
 [![Coverage Status][coverage-img]][coverage-url] [![Codacy Badge][codacy-img]][codacy-url]
 [![Discord chat][discord-img]][discord-url]
 
-.This acts as a web-based CGM (Continuous Glucose Monitor) to allow multiple caregivers to remotely view a patient's
+This acts as a web-based CGM (Continuous Glucose Monitor) to allow multiple caregivers to remotely view a patient's
 glucose data in real time. The server reads a MongoDB which is intended to be data from a physical CGM, where it sends
 new SGV (sensor glucose values) as the data becomes available. The data is then displayed graphically and blood glucose
 values are predicted 0.5 hours ahead using an autoregressive second order model. Alarms are generated for high and low
@@ -303,9 +307,9 @@ These alarm setting affect all delivery methods (browser, Pushover, IFTTT, etc.)
 be the defaults for new browser views, but will be overridden if different choices are made in the settings UI.
 
 - `ALARM_TYPES` (`simple` if any `BG_`_ ENV's are set, otherwise `predict`) - currently 2 alarm types are supported, and
-  can be used independently or combined. The `simple` alarm type only compares the current BG to `BG_` thresholds above,
-  the `predict` alarm type uses highly tuned formula that forecasts where the BG is going based on it's trend. `predict`
-  **DOES NOT** currently use any of the `BG_`_ ENV's
+  can be used independently or combined. The `simple` alarm type only compares the current BG to
+  `BG_`thresholds above, the`predict`alarm type uses highly tuned formula that forecasts where the BG is going based on it's trend.`predict`**DOES NOT** currently use any of the`BG*`*
+  ENV's
 - `BG_HIGH` (`260`) - the high BG outside the target range that is considered urgent (interprets units based on
   DISPLAY_UNITS setting)
 - `BG_TARGET_TOP` (`180`) - the top of the target range, also used to draw the line on the chart (interprets units based
