@@ -8,6 +8,7 @@ on:
   
 jobs:
   build-and-push:
+    if: endsWith(github.event.head_commit.message, '--release')  # Runs only if commit message ends with --release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
