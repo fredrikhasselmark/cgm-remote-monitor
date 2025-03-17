@@ -3,7 +3,7 @@ name: Publish Docker Image to GHCR
 on:
   push:
     branches:
-      - main  # Runs automatically when pushing to main
+      - master  # Runs automatically when pushing to master
   workflow_dispatch:  # Allows manual triggering
   
 jobs:
