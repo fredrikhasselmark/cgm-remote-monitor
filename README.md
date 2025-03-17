@@ -4,6 +4,12 @@
 
 docker build -t my-local-ns-image:latest .
 
+ghcr.io/fredrikhasselmark/my-image:latest
+
+## Deploy
+
+End commit message with `--release`
+
 ![nightscout horizontal](https://cloud.githubusercontent.com/assets/751143/8425633/93c94dc0-1ebc-11e5-99e7-71a8f464caac.png)
 
 [![Build Status][build-img]][build-url] [![Dependency Status][dependency-img]][dependency-url]
