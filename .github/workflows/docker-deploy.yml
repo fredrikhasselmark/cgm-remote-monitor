@@ -1,7 +1,10 @@
 name: Publish Docker Image to GHCR
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main  # Runs automatically when pushing to main
+  workflow_dispatch:  # Allows manual triggering
   
 jobs:
   build-and-push:
