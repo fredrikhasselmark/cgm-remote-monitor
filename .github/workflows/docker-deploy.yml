@@ -19,10 +19,10 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/my-image:latest .
-          docker tag ghcr.io/${{ github.repository_owner }}/my-image:latest ghcr.io/${{ github.repository_owner }}/my-image:${{ github.sha }}
+          docker build -t ghcr.io/${{ github.repository_owner }}/nightscout-host:latest .
+          docker tag ghcr.io/${{ github.repository_owner }}/nightscout-host:latest ghcr.io/${{ github.repository_owner }}/nightscout-host:${{ github.sha }}
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/my-image:latest
-          docker push ghcr.io/${{ github.repository_owner }}/my-image:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository_owner }}/nightscout-host:latest
+          docker push ghcr.io/${{ github.repository_owner }}/nightscout-host:${{ github.sha }}
