@@ -2,9 +2,9 @@
 
 ## Personal note
 
-docker build -t my-local-ns-image:latest .
+docker build -t local-nightscout-host:latest .
 
-ghcr.io/fredrikhasselmark/my-image:latest
+ghcr.io/fredrikhasselmark/nightscout-host:latest
 
 ## Deploy
 
