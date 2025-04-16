@@ -3,26 +3,35 @@ name: Publish Docker Image to GHCR
 on:
   push:
     branches:
-      - master  # Runs automatically when pushing to master
-  workflow_dispatch:  # Allows manual triggering
-  
+      - master  # Automatically runs on master pushes
+  workflow_dispatch:  # Allow manual trigger
+
 jobs:
   build-and-push:
-    if: endsWith(github.event.head_commit.message, '--release')  # Runs only if commit message ends with --release
+    if: endsWith(github.event.head_commit.message, '--release')
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
-      - name: Build and tag Docker image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/nightscout-host:latest .
-          docker tag ghcr.io/${{ github.repository_owner }}/nightscout-host:latest ghcr.io/${{ github.repository_owner }}/nightscout-host:${{ github.sha }}
-
-      - name: Push Docker image
-        run: |
-          docker push ghcr.io/${{ github.repository_owner }}/nightscout-host:latest
-          docker push ghcr.io/${{ github.repository_owner }}/nightscout-host:${{ github.sha }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          no-cache: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/nightscout-host:latest
+            ghcr.io/${{ github.repository_owner }}/nightscout-host:${{ github.sha }}
