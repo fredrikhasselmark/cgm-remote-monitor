@@ -117,7 +117,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
         - [`override` (Override Mode)](#override-override-mode)
         - [`xdripjs` (xDrip-js)](#xdripjs-xdrip-js)
         - [`alexa` (Amazon Alexa)](#alexa-amazon-alexa)
-        - [`googlehome` (Google Home/DialogFLow)](#googlehome-google-homedialogflow)
+        - [`googlehome` (Google Home/DialogFLow)](#googlehome-google-homedialogflow) [broken]
         - [`speech` (Speech)](#speech-speech)
         - [`cors` (CORS)](#cors-cors)
       - [Extended Settings](#extended-settings)
@@ -886,9 +886,13 @@ Integrated xDrip-js monitoring, uses these extended settings:
 
 Integration with Amazon Alexa, [detailed setup instructions](docs/plugins/alexa-plugin.md)
 
-##### `googlehome` (Google Home/DialogFLow)
+##### `googlehome` (Google Home/DialogFLow) [broken]
 
 Integration with Google Home (via DialogFlow), [detailed setup instructions](docs/plugins/googlehome-plugin.md)
+
+Unfortunately this integration broke when
+[Google discontinued conversational actions](https://developers.google.com/assistant/ca-sunset). We'll keep this here
+for reference, in case it can be revived at some point in the future.
 
 ##### `speech` (Speech)
 
