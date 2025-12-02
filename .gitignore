@@ -3,6 +3,7 @@ node_modules/
 
 
 bundle/bundle.out.js
+release/
 
 .vscode/
 .idea/
